@@ -44,7 +44,7 @@ end
 local HUMRP = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
 getgenv().ToFarm = ""
 getgenv().Quest = "" 
-getgenv().Distance = 3
+getgenv().Distance = 5
 getgenv().tweenspeed = 500
 getgenv().method = "Behind"
 getgenv().autofarm = false
@@ -217,7 +217,7 @@ Tab:AddSlider({
 	Name = "Distance From mob",
 	Min = 0,
 	Max = 7,
-	Default = 3,
+	Default = 5,
 	Color = Color3.fromRGB(255,255,255),
 	Increment = 1,
 	ValueName = "Distance",
