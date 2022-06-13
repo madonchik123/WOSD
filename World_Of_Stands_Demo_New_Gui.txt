@@ -185,6 +185,8 @@ if not getgenv().quest then return end
                 for i,v in pairs(game:GetService("Workspace").InteractiveNPC:GetDescendants()) do
                     if v.Name == "ID" and v.Parent.Name ~= "Bounty Master" then
                 task.wait()
+                require(game:GetService("ReplicatedStorage").Network):FireServer("OnPromptActivated",v.Value)
+                task.wait()
                 require(game:GetService("ReplicatedStorage").Network):InvokeServer("NPCInteract",v.Value)
                 if game:GetService("Players").LocalPlayer.PlayerGui.BaseGui:FindFirstChild("TextLabel") ~= nil then
                 
