@@ -215,7 +215,9 @@ Tab:AddDropdown({
 })
 Tab:AddDropdown({
 	Name = "Kill Method",
-	Default = "Behind",
+	Default = getgenv().method,
+	Save = true,
+	Flag = "method",
 	Options = {"Above","Behind","Below"},
 	Callback = function(Value)
 		getgenv().method = Value
@@ -223,7 +225,9 @@ Tab:AddDropdown({
 })
 Tab:AddDropdown({
        Name = "Teleport Method",
-       Default = "Teleport",
+       Default = getgenv().teleportmethod,
+       Save = true,
+       Flag = "teleportmethod",
        Options = {"Teleport","Tween"},
        Callback = function(Value)
           getgenv().teleportmethod = Value
