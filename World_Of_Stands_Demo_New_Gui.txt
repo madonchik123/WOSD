@@ -49,21 +49,34 @@ getgenv().tweenspeed = 500
 getgenv().method = "Behind"
 getgenv().autofarm = false
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "World of Stands", HidePremium = true, SaveConfig = false, ConfigFolder = "WorldOfStands"})
+local Window = OrionLib:MakeWindow({Name = "World of Stands", HidePremium = true, SaveConfig = true, ConfigFolder = "WorldOfStands"})
 local Tab = Window:MakeTab({
 	Name = "Autofarm",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 local Status = Tab:AddLabel("Status: Waiting")
+
+local validfolder = isfolder("WorldOfStands")
+if validfolder then
+local valid = isfile("WorldOfStands/2544520106.txt")
+if valid then
+local contents = readfile("WorldOfStands/2544520106.txt")
+local HttpService = game:GetService("HttpService")
+local SettingsTable = HttpService:JSONDecode(contents)
+for i,v in pairs(SettingsTable) do
+   getgenv()[i] = v
+end   
+end
+end
+
 Tab:AddToggle({
     Name = "Itemfarm",
-    Default = false,
-    Flag = "Itemfarm",
+    Default = getgenv().itemfarm,
+    Flag = "itemfarm",
     Save = true,
     Callback = function(Value)
     getgenv().itemfarm = Value
-		getgenv().itemfarm = Value
 spawn(function()
 while wait() do
  		    local Char = game.Players.LocalPlayer.Character 
@@ -76,13 +89,10 @@ while wait() do
               firetouchinterest(HUMRPs, v.Part, 0)
               end
               wait()
-              
-if v:FindFirstChild("Part") ~= nil then
-              
-firetouchinterest(HUMRPs, v.Part, 1)
+                if v:FindFirstChild("Part") ~= nil then
+                firetouchinterest(HUMRPs, v.Part, 1)
               end
-               
-end
+            end
            end
       end
 end
@@ -91,8 +101,8 @@ end)
 })
 Tab:AddToggle({
 	Name = "Autofarm",
-	Default = false,
-	Flag = "Autofarm",
+	Default = getgenv().autofarm,
+	Flag = "autofarm",
 	Save = true,
 	Callback = function(Value)
 		getgenv().autofarm = Value
@@ -136,7 +146,9 @@ Tab:AddToggle({
 })
 Tab:AddToggle({
     Name = "Auto Skill",
-    Default = false,
+    Default = getgenv().autoskill,
+    Flag = "autoskill",
+    Save = true,
     Callback = function(Value)
        getgenv().autoskill = Value
        spawn(function()
@@ -155,7 +167,9 @@ Tab:AddToggle({
 })
 Tab:AddToggle({
     Name = "Auto Quest",
-    Default = false,
+    Default = getgenv().quest,
+    Flag = "quest",
+    Save = true,
     Callback = function(Value)
         getgenv().quest = Value
         
@@ -190,7 +204,9 @@ end
 })
 Tab:AddDropdown({
 	Name = "To Farm",
-	Default = "",
+	Default = getgenv().ToFarm,
+	Save = true,
+	Flag = "ToFarm",
 	Options = enemies,
 	Callback = function(Value)
 		getgenv().ToFarm = Value
