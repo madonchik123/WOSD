@@ -143,22 +143,22 @@ Tab:AddToggle({
            while wait() do
                 if not getgenv().autoskill then return end
                 task.wait()
-                if not game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame.Attack1:FindFirstChild("Attack1") then
+                if game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame:FindFirstChild("Attack1") then
                 require(game:GetService("ReplicatedStorage").Network):FireServer("TryAttack","Attack1")
                 wait(1)
-                elseif not game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame.Attack2:FindFirstChild("Attack2") then
+                elseif game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame:FindFirstChild("Attack2") then
                 require(game:GetService("ReplicatedStorage").Network):FireServer("TryAttack","Attack2")
                 wait(1)
-                elseif not game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame.Attack3:FindFirstChild("Attack3") then
+                elseif game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame:FindFirstChild("Attack3") then
                 require(game:GetService("ReplicatedStorage").Network):FireServer("TryAttack","Attack3")
                 wait(1)
-                elseif not game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame.Attack2:FindFirstChild("Tech1") then
+                elseif game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame:FindFirstChild("Tech1") then
                 require(game:GetService("ReplicatedStorage").Network):FireServer("TryAttack","Tech1")
                 wait(1)
-                elseif not game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame.Attack3:FindFirstChild("Tech2") then
+                elseif game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame:FindFirstChild("Tech2") then
                 require(game:GetService("ReplicatedStorage").Network):FireServer("TryAttack","Tech2")
                 wait(1)
-                elseif not game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame.Attack3:FindFirstChild("Ultimate") then
+                elseif game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame:FindFirstChild("Ultimate") then
                 require(game:GetService("ReplicatedStorage").Network):FireServer("TryAttack","Ultimate")
                 wait(1)
                 end
