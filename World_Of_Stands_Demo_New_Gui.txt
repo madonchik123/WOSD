@@ -76,10 +76,13 @@ while wait() do
               firetouchinterest(HUMRPs, v.Part, 0)
               end
               wait()
-              if v:FindFirstChild("Part") ~= nil then
-              firetouchinterest(HUMRPs, v.Part, 1)
+              
+if v:FindFirstChild("Part") ~= nil then
+              
+firetouchinterest(HUMRPs, v.Part, 1)
               end
-               end
+               
+end
            end
       end
 end
@@ -140,14 +143,23 @@ Tab:AddToggle({
            while wait() do
                 if not getgenv().autoskill then return end
                 task.wait()
-                if not game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame.Attack1:FindFirstChild("Attack1") then
+                if game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame.Attack1:FindFirstChild("Attack1") ~= nil then
                 require(game:GetService("ReplicatedStorage").Network):FireServer("TryAttack","Attack1")
                 wait(1)
-                elseif not game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame.Attack2:FindFirstChild("Attack2") then
+                elseif game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame.Attack2:FindFirstChild("Attack2") ~= nil then
                 require(game:GetService("ReplicatedStorage").Network):FireServer("TryAttack","Attack2")
                 wait(1)
-                elseif not game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame.Attack3:FindFirstChild("Attack3") then
+                elseif game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame.Attack3:FindFirstChild("Attack3") ~= nil then
                 require(game:GetService("ReplicatedStorage").Network):FireServer("TryAttack","Attack3")
+                wait(1)
+                elseif game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame.Attack2:FindFirstChild("Tech1") ~= nil then
+                require(game:GetService("ReplicatedStorage").Network):FireServer("TryAttack","Tech1")
+                wait(1)
+                elseif game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame.Attack3:FindFirstChild("Tech2") ~= nil then
+                require(game:GetService("ReplicatedStorage").Network):FireServer("TryAttack","Tech2")
+                wait(1)
+                elseif game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.Overlay.BarFrame.ActionFrame.Attack3:FindFirstChild("Tech2") ~= nil then
+                require(game:GetService("ReplicatedStorage").Network):FireServer("TryAttack","Ultimate")
                 wait(1)
                 end
             end   
@@ -159,7 +171,8 @@ Tab:AddToggle({
     Default = false,
     Callback = function(Value)
         getgenv().quest = Value
-        OrionLib:MakeNotification({
+        
+OrionLib:MakeNotification({
 			Name = "Info!",
 			Content = "Using Autoquest will make you not able to move. To Fix This Reset",
 			Image = "rbxassetid://4483345998",
@@ -167,14 +180,17 @@ Tab:AddToggle({
 		})
         spawn(function()
             while wait() do
-            if not getgenv().quest then return end
+            
+if not getgenv().quest then return end
                 for i,v in pairs(game:GetService("Workspace").InteractiveNPC:GetDescendants()) do
                     if v.Name == "ID" and v.Parent.Name ~= "Bounty Master" then
                 task.wait()
                 require(game:GetService("ReplicatedStorage").Network):InvokeServer("NPCInteract",v.Value)
                 if game:GetService("Players").LocalPlayer.PlayerGui.BaseGui:FindFirstChild("TextLabel") ~= nil then
-                game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.TextLabel:Destroy()
-                end
+                
+game:GetService("Players").LocalPlayer.PlayerGui.BaseGui.TextLabel:Destroy()
+                
+end
                 
                 end
                 end
